@@ -1,11 +1,9 @@
 print("adjon meg egy szamot:", end="")
 number: int = int(input())
 
-if (10 <= number <= 20):
-    print(f"{number} 10 es 20 kozott van")
-
-elif (-20 <= number <= -10):
-    print(f"{number} -10 es -20 kozott van")
-
+if(number > 20 and number < 20):
+    print(f"a {number} 10 és 20 között található")
+elif(number < -10 and number > -20):
+    print(f"a {number}-10 és -20")
 else:
-    print(f"{number} nincs se 10 es 20 kozott se -10 es -20 kozott")
+    print(f"{number} nincsen 10 és 20 között. nincsen -10 és -20 között")
