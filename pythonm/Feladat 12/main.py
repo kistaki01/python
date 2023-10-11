@@ -1,0 +1,11 @@
+print("adjon meg egy szamot:", end="")
+number: int = int(input())
+
+if (10 <= number <= 20):
+    print(f"{number} 10 es 20 kozott van")
+
+elif (-20 <= number <= -10):
+    print(f"{number} -10 es -20 kozott van")
+
+else:
+    print(f"{number} nincs se 10 es 20 kozott se -10 es -20 kozott")
