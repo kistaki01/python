@@ -6,6 +6,5 @@ y: int = int(input())
 
 if (x % y == 0):
     print(f"{y} osztoja {x}-nek.")
-
 else:
     print(f"{y} nem osztoja {x}-nek.")
