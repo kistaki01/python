@@ -7,8 +7,8 @@ y: int = int(input())
 print("Adjon meg egy harmadik szamot:", end="")
 z: int = int(input())
 
-divisible1: int = x % y == 0
-divisible2: int = x % z == 0
+divisible1: bool = x % y == 0
+divisible2: bool = x % z == 0
 
 if  (divisible1 and divisible2) :
     print(f"{x} oszthato {y} es {z}")
