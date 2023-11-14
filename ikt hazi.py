@@ -109,8 +109,13 @@ if(Error != None):
 if(selectFood1 == 1 and selectFood2 == 7 and selectFood3 == 11 or selectFood3 == 13):
     selectFood2 != 7 or selectFood2 != 8
     print("a menu kivalo ertekelest kapott")
-else:
-    print("a menu nem kapta meg a kivalo ertekelest")
+elif(selectFood1 == 1 and selectFood2 == 5 and selectFood3 != 12 and selectFood3 == 9):
+    print("a valasztott menu: fitness")
+elif(selectFood1 == 2 and selectFood2 == 4 and selectFood3 == 12 and selectFood4 == 13 and selectFood1 != 8 and selectFood1 != 6):
+    print("a valasztott menu: vasarnapi menu")
+elif(selectFood2 == 8 or selectFood2 == 7 and selectFood3 == 14 and selectFood4 == 11 and selectFood1 != 6 and selectFood3 != 12 or selectFood4 != 12):
+    print(" a valasztott menu: napi menu")
+
 
 print("a mai menu tartalma:") 
 if(output4 != 0):
