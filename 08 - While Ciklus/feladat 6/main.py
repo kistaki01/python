@@ -3,7 +3,8 @@ import time
 
 number: int = None
 number2:int = None
-data:str = "" 
+data:str = ""
+reverse:int = None 
 while(number == None):
     data = input("kerem az elso szamot:")
     isNumber: bool = data.replace("-","").isdigit()
@@ -24,6 +25,16 @@ while(number2 == None):
             time.sleep(3)
             os.system("cls")
 
-for i in range(number2, number-1,-1):
+while(reverse == None):
+    data = input("kerem a leptek erteket:")
+    isreverse: bool = data.replace("-","").isdigit()
+    if(isreverse):
+        reverse = int(data)
+        if(isreverse and ((number2 - number) < reverse)):
+            print("\nNem megfelelo szamot adott meg!")
+            time.sleep(3)
+            os.system("cls")
+
+for i in range(number2, number-1,-reverse):
     print(i)
 
