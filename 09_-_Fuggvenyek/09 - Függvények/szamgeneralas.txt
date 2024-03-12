@@ -1,0 +1,9 @@
+random szam
+
+import random - random osztaly importalasa
+
+egész szám kezdő és végérték közt
+rnd: int = random.randint(kezdő érték, végérték)
+
+0.0 és 1.0 közötti valós értéket ad eredményül
+rnd: float = random.random()
