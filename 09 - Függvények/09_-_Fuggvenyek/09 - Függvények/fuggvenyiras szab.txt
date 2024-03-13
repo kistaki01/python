@@ -1,0 +1,13 @@
+Függvényírás szabályai:
+- mindig definiálni kell a visszatérő érték típusát
+- mindig definiálni kell a függvény nevét. Igyekezzünk
+olyan nevet adni a függvénynek, amely leírással bír
+arról, hogy a függvénynek mi is a feladata
+- a paraméterek típusát kötelező megadni
+- ha a függvénynek van visszatérő típusa (nem None)
+definiálva, akkor kötelesek vagyunk return kulcsszó
+segítségével olyan típusú adattal visszatérni a
+meghívás helyére
+- két, vagy több egyforma elnevezésű függvényt NEM
+írhatunk melyek különböznek paraméter típusban
+vagy számban (más nyelveknél ez támogatott
