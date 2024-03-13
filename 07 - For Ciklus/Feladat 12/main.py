@@ -1,17 +1,19 @@
+counter = 0
+
 print("adja meg a kezdoerteket: ", end="")
 startValue = int(input())
 
 print("adja meg a vegerteket: ", end="")
 endValue = int(input())
 
-summary: int = 0
-product: int = 1
+if(startValue % 3 == 1):
+    startValue +=2
+elif(startValue % 3 == 2):
+    startValue += 1
+elif(startValue == 0):
+    startValue += 3
 
-for i in range(startValue, endValue + 1, 1):
-    if( i % 2 == 0):
-        summary += i
-    else:
-        product = product * i
+for i in range(startValue,endValue+1,3):
+    counter += 1
 
-print(f"osszege: {summary}")
-print(f"szorata: {product}")
+print(f"3al oszthato szamok osszege {counter}")
