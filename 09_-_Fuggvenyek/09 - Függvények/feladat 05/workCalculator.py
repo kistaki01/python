@@ -1,16 +1,17 @@
 from consoleServices import *
 
-def getWage(promt:str) -> int:
+def getWage(wHours:int) -> int:
     overWork :int = 0
-    while(Whours == None or (Whours > 77 or Whours < 0)):
-        Whours = getIntNumber("kerem a szamot")               
-        if(Whours > 40):
-            overWork = Whours - 40
-            baseWage = Whours - overWork
-            wage = overWork * 1500 and baseWage * 1000
-        elif(Whours == 0):
-            print("nem kapott fizetest")
-        else:
-            baseWage * 1000
-
+    wage:int = 0 
+    hourlyRate : int = 1000  
+    baseHours : int = 40 
+    if(wHours >= baseHours):
+       overWork = wHours - baseHours
+       wage = (baseHours * hourlyRate) + (overWork * (hourlyRate * 1.5))
+    elif(wHours == 0):
+        print("nem kapott fizetest")
+    else:
+        wage = wHours * hourlyRate
+    
+    return wage
 

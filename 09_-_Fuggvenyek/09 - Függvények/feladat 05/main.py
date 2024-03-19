@@ -1,8 +1,8 @@
 from workCalculator import *
 from consoleServices import *
 
-name = getName("kerme a nevet  ")
-wage = workHours()
-Whours = getIntNumberBetweenInterval("kerem a dolgozott orakat",0,77)
+name = getString("kerem a nevet:")
+wHours = getIntNumberBetweenInterval("kerem a dolgozott orakat",0,77)
+wage = getWage(wHours)
 
-print(f"ennyi orat dolgozott: {Whours}, ennyi fizetest kap: {wage}, a neve: {name}")
+print(f"ennyi orat dolgozott: {wHours}, ennyi fizetest kap: {wage}, a neve: {name} ")

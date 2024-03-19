@@ -159,3 +159,20 @@ def getName() -> str:
         print("A nevben csak betuk lehetnek")
     os.system("cls")
     return name
+
+def getString(promt: str) -> str:
+    letter:str = None
+    isLetter: bool = False
+
+    while(letter == None or not isLetter):
+        print(promt, end=": ")
+        letter = input()
+
+        isLetter = len(letter) >= 2 and letter.isalpha()
+
+        if(not isLetter):
+            print("nem nevet adott meg")
+            time.sleep(2)
+            os.system("cls")
+    
+    return letter
