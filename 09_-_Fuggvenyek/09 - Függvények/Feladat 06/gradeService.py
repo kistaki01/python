@@ -1,4 +1,3 @@
-from consoleServices import *
 def gradeCalc(point:int ) -> int:
     grade : int = 0
     if(point < 50):
