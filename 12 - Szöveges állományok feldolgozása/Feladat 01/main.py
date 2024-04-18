@@ -10,3 +10,7 @@ print(f"\n az osztalynak: {len(students)} tanuloja van")
 
 avarage:float = getStudentsAvarage(students)
 print(f"az osztaly atlaga: {avarage:.2f}")
+
+bestStud:str = getHighestPointStudent(students)
+print(f"a legtobb  atlagu diak neve es atlaga:  {bestStud}")
+

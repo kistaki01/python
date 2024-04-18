@@ -18,3 +18,17 @@ def getStudentsAvarage(students:List[Student]) -> float:
     avarageSum:float = getSumAvg(students)
 
     return avarageSum / len(students)
+
+def getHighestPointStudent(students:List[Student]) -> float:
+    bestStud:float = 0
+    bestStudName:str = ""
+    for Student in students:
+        if(Student.avarage > bestStud):
+            bestStud = Student.avarage
+            bestStudName = Student.name
+
+    
+      
+    return bestStud,bestStudName
+
+
