@@ -4,7 +4,11 @@ from io import open
 from student import Student
 
 
-fileName:str = "adatok.txt"
+def getFileFullPath(fileName:str) -> str:
+    basePath: str = os.path.dirname(os.path.abspath(__file__))
+    fullPath: str = os.path.join(basePath, fileName)   
+
+    return fullPath 
 
 
 def getStudentsFromFile(fileName:str) -> List[Student]:
@@ -38,3 +42,24 @@ def getStudentsFromFile(fileName:str) -> List[Student]:
         print(f"{ex.filename} nem található!")
 
     return students
+
+def writeStudentsToFile(fileName:str,students: List[Student]) -> bool:
+    try:
+        fullPath:str = getFileFullPath(fileName)
+        index:int = 1
+
+        with open (fullPath, encoding='utf-8', mode ="a") as file:
+            for student in students:
+                file.write(f"{str(student)}")
+                
+                if(len(students) !=index):
+                    file.write("\n")
+
+                
+                index += 1
+        
+        return True
+    
+    except FileNotFoundError as ex:
+       
+       return False

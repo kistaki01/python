@@ -19,16 +19,42 @@ def getStudentsAvarage(students:List[Student]) -> float:
 
     return avarageSum / len(students)
 
-def getHighestPointStudent(students:List[Student]) -> float:
-    bestStud:float = 0
-    bestStudName:str = ""
-    for Student in students:
-        if(Student.avarage > bestStud):
-            bestStud = Student.avarage
-            bestStudName = Student.name
+def getHighestAvarage(students:List[Student]) -> float:
+    max:float = students[0].avarage
 
+    for index in range(1,len(students),1):
+        if(students[index].avarage > max):
+            max = students[index].avarage
+
+    return max
+
+def getBestStudents(students:List[Student]) -> List[Student]:
+    bestStudents:List[Student]=[]
+    maxAvarage:float = getHighestAvarage(students)
+    for student in students:
+        if(student.avarage == maxAvarage):
+            bestStudents.append(student)
     
-      
-    return bestStud,bestStudName
+    return bestStudents
 
+def getStudentsAboveAvarage(students:List[Student],avarage:float) -> List[Student]:
+    studentsAboveAvarage: List[Student] = []
+    baseAvarage:float = getStudentsAvarage(students)
+    
+    for student in students:
+        if(student.avarage > baseAvarage):
+            studentsAboveAvarage.append(student)
+    
+    return studentsAboveAvarage
+
+def isAnyExcellentStudent(students:List[Student]) -> bool:
+    
+    isAny:bool = False
+
+    for student in students:
+        if(student.avarage == 5):
+            isAny = True
+            break
+        
+    return isAny
 
