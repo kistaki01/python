@@ -58,3 +58,49 @@ def isAnyExcellentStudent(students:List[Student]) -> bool:
         
     return isAny
 
+
+
+def getBadGrade(students:List[Student]) -> int:
+    badStudents: int = 0
+    
+    for student in students:
+        if(student.avarage < 2):
+            badStudents += 1
+    
+    return badStudents
+
+def getGrade2(students:List[Student]) -> int:
+    grade2Students: int = 0
+    
+    for student in students:
+        if(student.avarage >= 2 and student.avarage < 3):
+            grade2Students += 1
+    
+    return grade2Students
+
+def getGrade3(students:List[Student]) -> int:
+    grade3Students: int = 0
+    
+    for student in students:
+        if(student.avarage >= 3 and student.avarage < 4):
+            grade3Students += 1
+    
+    return grade3Students
+
+def getGrade4(students:List[Student]) -> int:
+    grade4Students: int = 0
+    
+    for student in students:
+        if(student.avarage >= 4 and student.avarage < 5):
+            grade4Students += 1
+    
+    return grade4Students
+
+def getBestGrade(students:List[Student]) -> int:
+    bestStudents: int = 0
+    
+    for student in students:
+        if(student.avarage  == 5):
+            bestStudents += 1
+    
+    return bestStudents

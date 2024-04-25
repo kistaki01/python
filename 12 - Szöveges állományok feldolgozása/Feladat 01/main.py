@@ -27,3 +27,12 @@ if(isAnyExcellent):
     print("van kituno")
 else:
     print("nincs kituno")
+
+badStudents:int = getBadGrade(students)
+grade2Students:int = getGrade2(students)
+grade3Students:int = getGrade3(students)
+grade4Students:int = getGrade4(students)
+bestStudents:int = getBestGrade(students)
+print(f"elegtelenek:{badStudents},\n elegsegesek: {grade2Students},\njo: {grade3Students},\njeles:{grade4Students},\nkituno:{bestStudents}")
+
+

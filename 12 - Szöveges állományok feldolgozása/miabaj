@@ -1,0 +1,52 @@
+def getBadGrade(students:List[Student]) -> List[Student]:
+    badStudents: List[Student] = []
+    
+    for student in students:
+        if(student.avarage < 2):
+            badStudents.append(student)
+    
+    return badStudents
+
+def getGrade2(students:List[Student]) -> List[Student]:
+    grade2Students: List[Student] = []
+    
+    for student in students:
+        if(student.avarage >= 2 and student.avarage < 3):
+            grade2Students.append(student)
+    
+    return grade2Students
+
+def getGrade3(students:List[Student]) -> List[Student]:
+    grade3Students: List[Student] = []
+    
+    for student in students:
+        if(student.avarage >= 3 and student.avarage > 4):
+            grade3Students.append(student)
+    
+    return grade3Students
+
+def getGrade4(students:List[Student]) -> List[Student]:
+    grade4Students: List[Student] = []
+    
+    for student in students:
+        if(student.avarage >= 4 and student.avarage < 5):
+            grade4Students.append(student)
+    
+    return grade4Students
+
+def getBestGrade(students:List[Student]) -> List[Student]:
+    bestStudents: List[Student] = []
+    
+    for student in students:
+        if(student.avarage  == 5):
+            bestStudents.append(student)
+    
+    return bestStudents
+
+
+badStudents:List[Student] = getBestStudents(students)
+grade2Students:List[Student] = getGrade2(students)
+grade3Students:List[Student] = getGrade3(students)
+grade4Students:List[Student] = getGrade4(students)
+bestStudents:List[Student] = getBestGrade(students)
+print(f"elegtelenek:{badStudents},\n elegsegesek: {grade2Students},\njo: {grade3Students},\njeles:{grade4Students},\nkituno:{bestStudents}")
