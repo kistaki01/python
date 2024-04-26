@@ -104,3 +104,21 @@ def getBestGrade(students:List[Student]) -> int:
             bestStudents += 1
     
     return bestStudents
+
+def getStudentCategoriesCount(students:List[Student]) -> dict[str, int]:
+    categories:Dict[str,int] = {
+        "elegtelen":0,
+        "elegseges":0,
+        "jo":0,
+        "jeles":0,
+        "kituno":0,
+    }
+    for student in students:
+        studentCategory:str = student.getCategory()
+        categories[studentCategory] += 1
+        
+    return categories
+
+def printStudentCategoriesToConsole(studentCategories:Dict[str,int]) -> None:
+    for key, value in studentCategories.items():
+        print(f"\t - {key} : {value}")
