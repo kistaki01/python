@@ -6,6 +6,13 @@ from bookService import *
 books: List[Book] = getBooks("adatok.txt")
 printToConsole(books)
 
+pbDate: List[Book] = get1900thbooks(books)
+is1900thFileWriteSuccess: bool = writeToFile("1900.txt", pbDate)
+if(is1900thFileWriteSuccess):
+    print("\n1900.txt sikeresen mentett")
+else:
+    print("\n nem sikerult")
+
 itBooks: List[Book] = getITbooks(books)
 isITFileWriteSuccess: bool = writeToFile("informatika.txt", itBooks)
 if(isITFileWriteSuccess):
@@ -14,11 +21,5 @@ else:
     print("\n nem sikerult")
 
 
-pbDate: List[Book] = get1900thbooks(books)
-is1900thFileWriteSuccess: bool = writeToFile("1900.txt", pbDate)
-if(is1900thFileWriteSuccess):
-    print("\n1900.txt sikeresen mentett")
-else:
-    print("\n nem sikerult")
 
 

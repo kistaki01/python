@@ -30,7 +30,7 @@ def getBooks(fileName: str) -> List[Book]:
                     continue
 
                 book = Book()
-                book.surmane = data[0]
+                book.surname = data[0]
                 book.firstname = data[1]
                 book.date = data[2]
                 book.title = data[3]
@@ -67,3 +67,4 @@ def writeToFile(fileName: str, base: List[Book]) -> bool:
         print(f"{fileName} nem talalhato")
 
         return False
+

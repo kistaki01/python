@@ -42,9 +42,30 @@ def getCitiesInBekes(cities: List[City]) -> List[City]:
 
     return citiesInBekes
 
-def getCountryAndAreas(cities: List[City]) -> List[City]:
-    countryAndAreas: List[City] = []
-    for city in cities:
-        countryAndAreas.append(f"{city.county}: {city.zone}")
+def getCountyName(settlements:List[City]) -> Set[str]:
+    counties:Set[str] = set()
 
-    return countryAndAreas
+    for settlement in settlements:
+        counties.add(settlement.county)
+    
+    return counties
+
+def getCountyNamesWithAreaSize(settlements:List[City]) -> Dict[str, float]:
+    countyNamesWithAreSize : Dict[str, float] = {}
+
+    counties :Set[str] = getCountyName(settlements)
+    for county in counties:
+        countyNamesWithAreSize[county] = 0
+    
+    for settlement in settlements:
+        countyNamesWithAreSize[settlement.county] += settlement.area
+
+    return countyNamesWithAreSize
+
+def printFileResultToConsole(fileName:str, fileWriteSucceeded: bool) -> None:
+    if(fileWriteSucceeded):
+        print(f"{fileName} allomany letrehozva")
+    else:
+        print(f"{fileName} allomany nem lett letrehozva")
+        
+    

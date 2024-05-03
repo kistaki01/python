@@ -43,7 +43,7 @@ if(ifCitiesInBekesFileWriteSuccess):
 else:
     print("\nbekes.txt állomány mentése sikertelen volt!")
 
-countryAndAreas: List[City] = getCountryAndAreas(cities)
+countryAndAreas: List[City] = writeBigAreasToFile(cities)
 
 ifCountryAndAreasFileWriteSuccess: bool = writeCountryAndAreasToFile("megyeteruletek.txt", countryAndAreas)
 

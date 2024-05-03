@@ -5,15 +5,6 @@ def printToConsole(books:List[Book]) -> None:
     for Book in books:
         print(Book)
 
-def getITbooks(books: List[Book]) -> List[Book]:
-    type: List[Book] = []
-
-    for book in books:
-        if(book.type == "informatika"):
-            type.append(book)
-
-    return type
-
 def get1900thbooks(books: List[Book]) -> List[Book]:
     pbdate: List[Book] = []
 
@@ -22,4 +13,13 @@ def get1900thbooks(books: List[Book]) -> List[Book]:
             pbdate.append(book)
 
     return pbdate
+
+def getITbooks(books: List[Book]) -> List[Book]:
+    type: List[Book] = []
+
+    for book in books:
+        if(book.type == "informatika"):
+            type.append(book)
+
+    return type
 
