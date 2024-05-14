@@ -23,12 +23,6 @@ def getBooksFromFile(fileName: str) -> List[Book]:
                 oneLine = line.strip()
                 data = oneLine.split("\t")
 
-                author = Author()
-                author.firstName = data[0]
-                author.lastName = data[1]
-                author.birthday = data[2]
-                author.honorar = f"${data[10]}"
-
                 book = Book()
                 book.author = author
                 book.title = data[3]
