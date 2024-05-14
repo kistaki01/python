@@ -1,16 +1,17 @@
+from typing import *
 
 class Player:
-    def __init__(self,) -> None:
-        self.kitnum:str = None
-        self.nickname:str = None
-        self.surname:str = None
-        self.bday:str = None
-        self.price:str = None
-        self.club:str = None
-        self.pos:str = None
-        self.natiohun:str = None
-        self.notnatiohun:str = None
-
-     
+    def __init__(self):
+        self.clubName : str = None
+        self.shirtNumber : float = None
+        self.playerFirstName : str = None
+        self.playerLastName : str = None
+        self.birth : str = None
+        self.hungary : float = None
+        self.abroad : float = None
+        self.value : float = None
+        self.position : str = None
+        
     def __str__(self) -> str:
-        return f"{self.kitnum}\t {self.nickname}\t {self.surname}\t {self.firstname}\t {self.price}\t{self.price}\t{self.club}\t{self.pos}"
+        return f"{self.clubName}\t{self.shirtNumber}\t{self.playerFirstName}\t{self.playerLastName}\t{self.birth}\t{self.hungary}\t{self.abroad}\t{self.value}\t{self.position}"
+    

@@ -1,71 +1,88 @@
-import os
 from typing import *
+from io import open
+import os
 from players import Player
 
+def getFileFullPath(fileName:str)-> str:
 
-
-def getFileFullPath(fileName: str) -> str:
     basePath: str = os.path.dirname(os.path.abspath(__file__))
-    return os.path.join(basePath, fileName)
+    fullPath: str = os.path.join(basePath, fileName)
+
+    return fullPath
 
 def getPlayersFromFile(fileName: str) -> List[Player]:
-    players:List[Player] = []
+
+    fileName:str = "adatok.txt"
+    players: List[Player] = []
+    player: Player = None
     oneLine:str = None
-    data: List[str] = None
-    player:Player = None
+    data: List[str] = []
 
     try:
-        fileFullPath:str = getFileFullPath(fileName)
+        fullPath: str = getFileFullPath(fileName)
 
-        with open(fileFullPath, encoding='utf-8', mode="r") as file:
+        with open(fullPath,encoding='utf-8', mode="r") as file:
             for line in file:
                 oneLine = line.strip()
-                data = oneLine.split("\t")
+                data = oneLine.split('\t')
 
-                if(data(len == 9)):
-                    players = Player()
-                    player.club = data[0]
-                    player.kitnum = data[1]
-                    player.nickname = data[2]
-                    player.surname = data[3]
-                    player.bday = int(data[4].replace(".",""))
-                    player.natiohun = data[5]
-                    player.notnatiohun = data[6]
-                    player.price = data[7]
-                    player.pos = data[8]
+                if(data[0] == ''):
+                    continue
+
+                player = Player()
+                if(len(data) == 9):
+                    player.clubName = data[0]
+                    player.shirtNumber = float(data[1])
+                    player.playerFirstName = data[2]
+                    player.playerLastName = data[3]
+                    player.birth = data[4]
+                    player.hungary = float(data[5])
+                    player.abroad = float(data[6])
+                    player.value = float(data[7])
+                    player.position = data[8]
+                    players.append(player)
                 else:
-                    players = Player()
-                    player.club = data[0]
-                    player.kitnum = data[1]
-                    player.surname = data[2]
-                    player.bday = int(data[3].replace(".",""))
-                    player.natiohun = bool(data[4])
-                    player.notnatiohun = bool(data[5])
-                    player.price = data[6]
-                    player.pos = data[7]
+                    player.clubName = data[0]
+                    player.shirtNumber = float(data[1])
+                    player.playerFirstName = data[2]
+                    player.birth = data[3]
+                    player.hungary = float(data[4])
+                    player.abroad = float(data[5])
+                    player.value = float(data[6])
+                    player.position = data[7]
+                    players.append(player)
 
-                players.append(Player)
     except FileNotFoundError as ex:
-        print(f"{ex.fileName} nem található!")
+        print(f"{ex.filename} nem található!")
 
     return players
 
-#def writeBooksToFile(fileName: str, books:List[Book]) -> bool:
-    index: int = 1
-
+def writeHUNPlayersToFile(fileName: str, players: List[Player]) -> bool:
     try:
-        fileFullPath:str = getFileFullPath(fileName)
+        fullPath: str = getFileFullPath(fileName)
 
-        with open(fileFullPath, encoding='utf-8', mode="a") as file:
-            for book in books:
-                file.write(str(book))
-
-                if(len(books) != index):
-                    file.write("\n")
-
-                index += 1
+        with open (fullPath, encoding="utf-8",mode="w+") as file:
+            for player in players:
+                if(player.hungary == -1):
+                    file.write(f"{str(player.playerFirstName)} {str(player.playerLastName)}\t{str(player.clubName)}\t{str(player.value)}\n")
 
         return True
-    except FileNotFoundError as ex:
-        print(f"{ex.fileName} nem található!")
+    except FileNotFoundError:
+        print(f"{fileName} nem található!")
+
+        return False
+
+def writeImigrantPlayersToFile(fileName: str, players: List[Player]) -> bool:
+    try:
+        fullPath: str = getFileFullPath(fileName)
+
+        with open (fullPath, encoding="utf-8",mode="w+") as file:
+            for player in players:
+                if(player.abroad == -1):
+                    file.write(f"{str(player.playerFirstName)} {str(player.playerLastName)}\t{str(player.clubName)}\t{str(player.value)}\n")
+
+        return True
+    except FileNotFoundError:
+        print(f"{fileName} nem található!")
+
         return False

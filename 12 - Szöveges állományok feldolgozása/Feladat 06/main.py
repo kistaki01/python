@@ -1,9 +1,17 @@
-import os
-from typing import *
 from players import Player
-from fileService import *
+from fileService import *   
+from playerService import *
 
-players:List[Player] = getPlayersFromFile("adatok.txt")
+players : list[Player] = getPlayersFromFile("adatok.txt")
 
 
-print("a legidosebb jatekos adatai:")
+EldestPlayer : List[Player] = getTheOldestPlayer(players)
+PrintElderlyWB(elderlyWB,players)
+
+getPlayerPricePerTeam(players)
+avgPrice : float = AvgPrice(players)
+
+writeHUNPlayersToFile("magyar.txt",players)
+writeImigrantPlayersToFile("kulfoldi.txt",players)
+
+SuperHUNPlayers : List[Player] = getSuperHUNPlayers(players)
