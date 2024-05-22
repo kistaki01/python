@@ -23,14 +23,12 @@ def getXIXDict(racers:List[Racers]) -> Dict[str,datetime]:
 
 def selectTheLowestNumRacer(racers:List[Racers]) -> str:
     startracerNum: int = racers[0].raceNum
-    natioofracer:str = None
 
     for racer in racers:
         if(racer.raceNum != "" and racer.raceNum < startracerNum):
             startracerNum = racer.raceNum
-            natioofracer = racer.natio
 
-    return natioofracer    
+    return startracerNum    
 
 def getRepeatedNums(racers:List[Racers]) -> Set[int]:
     repeatednums: Set[int] = set()
