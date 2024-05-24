@@ -28,8 +28,7 @@ def getRacersFromFile(fileName: str) -> List[Racers]:
                 if(data[3] != ""):
                     racer.raceNum = int(data[3])
                 else:    
-                    #racer.raceNum = data[3]
-                    None
+                    racer.raceNum = None
                 racers.append(racer)
     except FileNotFoundError:
         print(f"{fileName} nem található!")
