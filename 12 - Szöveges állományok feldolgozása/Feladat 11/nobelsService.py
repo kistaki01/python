@@ -6,7 +6,7 @@ def get2017Nobels(nobels:List[Nobels]) -> List[str]:
     nobelsOf2017:List[str] = []
     for nobel in nobels:
         if(nobel.date == "2017" and nobel.type == "irodalmi"):
-            nobelsOf2017.append(nobel.firstname,nobel.lastname)
+            nobelsOf2017.append(f"{nobel.firstname} {nobel.lastname}")
 
     return nobelsOf2017
 
@@ -59,7 +59,7 @@ def getMcDonald(nobels:List[Nobels]) -> str:
     for nobel in nobels:
         if(nobel.firstname.lower() == "Arthur B.".lower() and nobel.lastname.lower() == "McDonald".lower()):
             nobelType = nobel.type
-
+            break
     return nobelType
 
 

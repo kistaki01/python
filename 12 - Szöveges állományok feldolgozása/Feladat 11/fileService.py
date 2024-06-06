@@ -28,31 +28,10 @@ def getRacersFromFile(fileName: str) -> List[Nobels]:
                 if(data[3] != ""):
                     nobel.lastname = data[3]
                 else:    
-                    None
+                    nobel.lastname = None
 
                 nobels.append(nobel)
     except FileNotFoundError:
         print(f"{fileName} nem található!")
 
     return nobels
-
-def writeDocsToFile(fileName: str, nobels: List[Nobels]) -> bool:
-    index: int = 1
-
-    try:
-        fileFullPath:str = getFileFullPath(fileName)
-
-        with open(fileFullPath, encoding='utf-8', mode="w+") as file:
-            file.write("év;típus;keresztnév;vezetéknév\n")
-            for nobel in nobels:
-                file.write(f"{nobel.date};{nobel.type};{nobel.firstname};{nobel.lastname}")
-
-                if(len(nobels) != index):
-                    file.write("\n")
-
-                index += 1
-
-        return True
-    except FileNotFoundError as ex:
-        print(f"{ex.fileName} sikertelen!")
-        return False
