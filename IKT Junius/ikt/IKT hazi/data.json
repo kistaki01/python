@@ -1,0 +1,53 @@
+{
+    "students": [
+        {
+            "id": "JB9Y6EZJKS",
+            "name": "joci",
+            "class": "11a",
+            "subjects": {},
+            "active": true
+        },
+        {
+            "id": "DFGAF1ZW09",
+            "name": "palotas",
+            "class": "1c",
+            "subjects": {},
+            "active": false
+        },
+        {
+            "id": "NBR013016H",
+            "name": "erik",
+            "class": "12b",
+            "subjects": {
+                "yes": [
+                    {
+                        "grade": 2,
+                        "reason": "luck",
+                        "date": "1-2-3"
+                    }
+                ]
+            },
+            "active": false
+        },
+        {
+            "id": "LFFNAK914",
+            "name": "jancsi",
+            "class": "8a",
+            "subjects": {
+                "matek": [
+                    {
+                        "grade": 5,
+                        "reason": "tanult",
+                        "date": "1-2-4"
+                    },
+                    {
+                        "grade": 5,
+                        "reason": "meleg",
+                        "date": "1-2-3"
+                    }
+                ]
+            },
+            "active": true
+        }
+    ]
+}

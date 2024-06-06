@@ -7,3 +7,27 @@ interest:int = getIntNumber("kerem a kamatlabat:")
 compTerm:int = getCompoundInterest(money,term,interest)
 
 print(f"befektetett osszeg: {money} \n Futamido: {term} \n Kamat: {interest} \n A futamido vegen ennyi penze van: {compTerm}")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

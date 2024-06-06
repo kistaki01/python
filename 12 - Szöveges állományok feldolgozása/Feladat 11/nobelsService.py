@@ -48,7 +48,7 @@ def getCuries(nobels:List[Nobels]) -> List[str]:
 
     for nobel in nobels:
         if("Curie".lower() in nobel.lastname.lower()):
-            curies.append(nobel)
+            curies.append(nobels)
     
     return curies
 
