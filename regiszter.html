@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>Regisztráció</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f2f2f2;
+    }
+
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      width: 300px;
+    }
+
+    .container h2 {
+      text-align: center;
+    }
+
+    .container input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .container button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      border: none;
+      color: white;
+      border-radius: 4px;
+    }
+
+    .container button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Regisztráció</h2>
+    <input type="text" id="email" placeholder="Email">
+    <input type="password" id="pass1" placeholder="Jelszó">
+    <input type="password" id="pass2" placeholder="Jelszó újra">
+    <button onclick="register()">Regisztrálok</button>
+  </div>
+
+  <script>
+    function isValidEmail(email) {
+      if (!email.includes("@") || !email.includes(".")) return false;
+      
+      const parts = email.split(".");
+      const domain = parts[parts.length - 1];
+      return domain.length >= 2 && domain.length <= 3;
+    }
+
+    function register() {
+      const email = document.getElementById("email").value.trim();
+      const pass1 = document.getElementById("pass1").value;
+      const pass2 = document.getElementById("pass2").value;
+
+      if (!isValidEmail(email)) {
+        alert("Hibás email formátum!");
+        return;
+      }
+
+      if (pass1 !== pass2) {
+        alert("A két jelszó nem egyezik!");
+        return;
+      }
+
+      if (pass1 === "" || pass2 === "") {
+        alert("A jelszó mezők nem lehetnek üresek!");
+        return;
+      }
+
+      alert("Sikeres regisztráció!");
+      console.log("Email:", email);
+      console.log("Jelszó:", pass1);
+    }
+  </script>
+
+</body>
+</html>
