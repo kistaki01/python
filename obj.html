@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>SZIN Programok</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 20px;
+        }
+        input {
+            margin: 5px;
+        }
+        button {
+            margin-left: 5px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Szegedi Ifjúsági Napok – Programok</h1>
+
+<h3>Program hozzáadása / módosítása</h3>
+<input type="text" id="artist" placeholder="Fellépő neve">
+<input type="text" id="day" placeholder="Nap (pl. Péntek)">
+<input type="text" id="stage" placeholder="Színpad">
+<button onclick="saveProgram()">Mentés</button>
+
+<h3>Programlista</h3>
+<ul id="programList"></ul>
+
+<script>
+    let programs = [
+        { id: 1, artist: "Halott Pénz", day: "Péntek", stage: "Nagyszínpad" },
+        { id: 2, artist: "Bagossy Brothers Company", day: "Szombat", stage: "Nagyszínpad" }
+    ];
+
+    let editId = null;
+
+    function render() {
+        const list = document.getElementById("programList");
+        list.innerHTML = "";
+
+        programs.forEach(program => {
+            const li = document.createElement("li");
+            li.innerHTML = `
+                <strong>${program.artist}</strong> – ${program.day}, ${program.stage}
+                <button onclick="editProgram(${program.id})">Módosít</button>
+                <button onclick="deleteProgram(${program.id})">Töröl</button>
+            `;
+            list.appendChild(li);
+        });
+    }
+
+    function saveProgram() {
+        const artist = document.getElementById("artist").value;
+        const day = document.getElementById("day").value;
+        const stage = document.getElementById("stage").value;
+
+        if (editId === null) {
+            programs.push({
+                id: Date.now(),
+                artist: artist,
+                day: day,
+                stage: stage
+            });
+        } else {
+            const program = programs.find(p => p.id === editId);
+            program.artist = artist;
+            program.day = day;
+            program.stage = stage;
+            editId = null;
+        }
+
+        document.getElementById("artist").value = "";
+        document.getElementById("day").value = "";
+        document.getElementById("stage").value = "";
+
+        render();
+    }
+
+    function editProgram(id) {
+        const program = programs.find(p => p.id === id);
+        document.getElementById("artist").value = program.artist;
+        document.getElementById("day").value = program.day;
+        document.getElementById("stage").value = program.stage;
+        editId = id;
+    }
+
+    function deleteProgram(id) {
+        programs = programs.filter(p => p.id !== id);
+        render();
+    }
+
+    render();
+</script>
+
+</body>
+</html>
+
