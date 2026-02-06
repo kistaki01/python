@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>Autok</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #f0f0f0;
+      padding: 20px;
+    }
+
+    .cards {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: white;
+      padding: 10px;
+      width: 220px;
+      border: 1px solid #ccc;
+    }
+
+    input, button {
+      width: 100%;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Autók kezelése (GET / POST / PUT / DELETE)</h1>
+
+<button onclick="showAdd()">Új autó</button>
+
+<p id="error" style="color:red;"></p>
+
+<div class="cards" id="cards"></div>
+
+
+<div id="form" style="display:none;">
+  <h2 id="formTitle"></h2>
+  <input id="brand" placeholder="Márka">
+  <input id="model" placeholder="Modell">
+  <input id="year" type="number" placeholder="Év">
+  <button onclick="saveCar()">Mentés</button>
+  <button onclick="cancel()">Mégse</button>
+</div>
+
+<script>
+const API = "https://surveys-5jvt.onrender.com/api/cars/";
+let editId = null;
+
+
+function loadCars() {
+  fetch(API, { method: "GET" })
+    .then(res => res.json())
+    .then(cars => {
+      const cards = document.getElementById("cards");
+      cards.innerHTML = "";
+
+      cars.forEach(car => {
+        const div = document.createElement("div");
+        div.className = "card";
+        div.innerHTML = `
+          <b>${car.brand}</b><br>
+          Modell: ${car.model}<br>
+          Év: ${car.year}<br>
+          <button onclick="viewCar(${car.id})">Részletek</button>
+          <button onclick="editCar(${car.id})">Szerkeszt</button>
+          ${car.id > 4 ? `<button onclick="deleteCar(${car.id})">Törlés</button>` : ""}
+        `;
+        cards.appendChild(div);
+      });
+    })
+    .catch(() => {
+      document.getElementById("error").innerText = "Hiba a lekérésnél";
+    });
+}
+
+
+function viewCar(id) {
+  fetch(API + "/" + id, { method: "GET" })
+    .then(res => res.json())
+    .then(car => {
+      alert(
+        "ID: " + car.id + "\n" +
+        "Márka: " + car.brand + "\n" +
+        "Modell: " + car.model + "\n" +
+        "Év: " + car.year
+      );
+    });
+}
+
+
+function saveCar() {
+  const car = {
+    brand: document.getElementById("brand").value,
+    model: document.getElementById("model").value,
+    year: Number(document.getElementById("year").value)
+  };
+
+  let method = "POST";
+  let url = API;
+
+  if (editId !== null) {
+    method = "PUT";
+    url = API + "/" + editId;
+  }
+
+  fetch(url, {
+    method: method,
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(car)
+  })
+  .then(() => {
+    cancel();
+    loadCars();
+  });
+}
+
+
+function editCar(id) {
+  if (id <= 4) {
+    alert("Ez az autó nem módosítható!");
+    return;
+  }
+
+  editId = id;
+  document.getElementById("formTitle").innerText = "Autó szerkesztése";
+  document.getElementById("form").style.display = "block";
+
+  fetch(API + "/" + id, { method: "GET" })
+    .then(res => res.json())
+    .then(car => {
+      document.getElementById("brand").value = car.brand;
+      document.getElementById("model").value = car.model;
+      document.getElementById("year").value = car.year;
+    });
+}
+
+
+function deleteCar(id) {
+  fetch(API + "/" + id, { method: "DELETE" })
+    .then(() => loadCars());
+}
+
+
+function showAdd() {
+  editId = null;
+  document.getElementById("formTitle").innerText = "Új autó";
+  document.getElementById("form").style.display = "block";
+}
+
+function cancel() {
+  document.getElementById("form").style.display = "none";
+  document.getElementById("brand").value = "";
+  document.getElementById("model").value = "";
+  document.getElementById("year").value = "";
+}
+
+loadCars();
+</script>
+
+</body>
+</html>
