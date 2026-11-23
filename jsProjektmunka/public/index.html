@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutóKatalógus – JS Beadandó</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🚗 AutóKatalógus</h1>
+        <div id="auth-status">
+            <span id="current-user-label">Vendég (nincs belépve)</span>
+            <button id="btn-show-login" onclick="toggleAuthModal(true)">Belépés / Regisztráció</button>
+            <button id="btn-logout" class="hidden" onclick="logout()">Kilépés</button>
+        </div>
+    </header>
+
+    <main>
+        
+        <section id="auth-section" class="card hidden">
+            <h2 id="auth-title">Belépés</h2>
+            <form id="auth-form">
+                <input type="text" id="username" placeholder="Felhasználónév" required>
+                <input type="password" id="password" placeholder="Jelszó" required>
+                <div class="btn-group">
+                    <button type="submit">Tovább</button>
+                    <button type="button" id="toggle-auth-mode" onclick="switchAuthMode()">Nincs még fiókom (Regisztráció)</button>
+                    <button type="button" class="secondary" onclick="toggleAuthModal(false)">Mégse</button>
+                </div>
+            </form>
+            <p id="auth-error" class="error"></p>
+        </section>
+
+        
+        <section id="car-form-section" class="card hidden">
+            <h2 id="form-title">Új autó hozzáadása</h2>
+            <form id="car-form">
+                <input type="hidden" id="car-id">
+                <div class="grid-inputs">
+                    <input type="text" id="car-brand" placeholder="Márka (pl. BMW)" required>
+                    <input type="text" id="car-model" placeholder="Típus (pl. M3)" required>
+                    <input type="number" id="car-year" placeholder="Évjárat (pl. 2020)" min="1900" max="2026" required>
+                    <input type="number" id="car-price" placeholder="Ár (Ft)" min="0" required>
+                </div>
+                <textarea id="car-desc" placeholder="Rövid leírás az autóról..." rows="2" required></textarea>
+
+                <div class="file-row">
+                    <label for="car-image">Autó képe (fájl kiválasztása):</label>
+                    <input type="file" id="car-image" accept="image/*">
+                    <img id="image-preview" class="preview hidden" alt="Előnézet">
+                </div>
+
+                <label class="checkbox-row">
+                    <input type="checkbox" id="car-public" checked>
+                    <span>Publikus hirdetés (belépés nélkül is látható)</span>
+                </label>
+
+                <div class="btn-group">
+                    <button type="submit" id="btn-save-car">Mentés</button>
+                    <button type="button" id="btn-cancel-edit" class="secondary hidden" onclick="resetCarForm()">Szerkesztés megszakítása</button>
+                </div>
+            </form>
+        </section>
+
+     
+        <section>
+            <div class="list-header">
+                <h2 id="list-heading">Publikus autók</h2>
+                <div id="filter-controls" class="hidden">
+                    <label>
+                        <input type="checkbox" id="only-my-cars" onchange="renderCars()"> Csak a saját autóim mutatása
+                    </label>
+                </div>
+            </div>
+            <div id="cars-container" class="cars-grid"></div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
